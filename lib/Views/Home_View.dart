@@ -8,6 +8,7 @@ class HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    weatherModel;
     return Scaffold(
       appBar: AppBar(
         actions: [
@@ -21,23 +22,16 @@ class HomeView extends StatelessWidget {
                 ),
               );
             },
-            icon: Icon(
-              Icons.search,
-              color: Colors.white,
-              size: 30,
-            ),
+            icon: Icon(Icons.search, color: Colors.white, size: 30),
           ),
         ],
         backgroundColor: Colors.blue,
         title: Text(
           'Weather',
-          style: TextStyle(
-            color: Colors.white,
-            fontWeight: FontWeight.bold,
-          ),
+          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
         ),
       ),
-      body: WeatherInfoBody(),
+      body: weatherModel == null ? NoWeatherBody() : WeatherInfoBody(),
     );
   }
 }
