@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:weather_app/Cubits/get_weather_cubit/get_weather_cubit.dart';
 import 'package:weather_app/Cubits/get_weather_cubit/get_weather_cubit_states.dart';
+import 'package:weather_app/Models/theme_color_model.dart';
 import 'package:weather_app/Views/Search_View.dart';
 import 'package:weather_app/Widgets/No_Weather_Body.dart';
 import 'package:weather_app/Widgets/Weather_Info_body.dart';
@@ -11,9 +12,11 @@ class HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    weatherModel;
+    var weatherModel = BlocProvider.of<GetWeatherCubit>(context).weatherModel;
     return Scaffold(
       appBar: AppBar(
+        shadowColor: Colors.black,
+        elevation: 10,
         actions: [
           IconButton(
             onPressed: () {
@@ -25,13 +28,15 @@ class HomeView extends StatelessWidget {
                 ),
               );
             },
-            icon: Icon(Icons.search, color: Colors.white, size: 30),
+            icon: Icon(Icons.search, size: 30),
           ),
         ],
-        backgroundColor: Colors.blue,
+        backgroundColor: ThemeColorModel().getThemeColor(
+          condition: weatherModel?.weatherCondition,
+        ),
         title: Text(
-          'Weather',
-          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+          'Weather APP',
+          style: TextStyle(fontWeight: FontWeight.bold),
         ),
       ),
       body: BlocBuilder<GetWeatherCubit, WeatherStates>(
