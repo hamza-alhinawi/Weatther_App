@@ -8,6 +8,7 @@ class GetWeatherCubit extends Cubit<WeatherStates> {
   GetWeatherCubit() : super(WeatherInitialState());
   WeatherModel? weatherModel;
   Future<void> getWeather({required String cityName}) async {
+    emit(WeatherLoadingIndicatorState());
     try {
       weatherModel = await WeatherService(
         Dio(),

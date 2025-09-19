@@ -4,6 +4,7 @@ import 'package:weather_app/Cubits/get_weather_cubit/get_weather_cubit.dart';
 import 'package:weather_app/Cubits/get_weather_cubit/get_weather_cubit_states.dart';
 import 'package:weather_app/Models/theme_color_model.dart';
 import 'package:weather_app/Views/Search_View.dart';
+import 'package:weather_app/Views/loading_screen.dart';
 import 'package:weather_app/Widgets/No_Weather_Body.dart';
 import 'package:weather_app/Widgets/Weather_Info_body.dart';
 
@@ -41,7 +42,9 @@ class HomeView extends StatelessWidget {
       ),
       body: BlocBuilder<GetWeatherCubit, WeatherStates>(
         builder: (context, state) {
-          if (state is WeatherInitialState) {
+          if (state is WeatherLoadingIndicatorState) {
+            return LoadingScreen();
+          } else if (state is WeatherInitialState) {
             return NoWeatherBody();
           } else if (state is WeahterLoadedState) {
             return WeatherInfoBody();

@@ -9,7 +9,11 @@ class NoWeatherBody extends StatelessWidget {
       child: Text(
         textAlign: TextAlign.center,
         'There is no weather 😔 start searching now🔎',
-        style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+        style: TextStyle(
+          color: Colors.black,
+          fontSize: 30,
+          fontWeight: FontWeight.bold,
+        ),
       ),
     );
   }
