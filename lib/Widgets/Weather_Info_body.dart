@@ -11,7 +11,7 @@ class WeatherInfoBody extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         gradient: LinearGradient(
-          begin: Alignment.topCenter, // يبدأ من منتصف الحافة العلوية
+          begin: Alignment.topCenter, 
           end: Alignment.bottomCenter,
           colors: [
             ThemeColorModel().getThemeColor(

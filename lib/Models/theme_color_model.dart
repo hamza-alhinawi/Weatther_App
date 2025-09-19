@@ -1,6 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:weather_app/Cubits/get_weather_cubit/get_weather_cubit.dart';
 
 class ThemeColorModel {
+  Color colorText(BuildContext context) {
+    return ThemeData.estimateBrightnessForColor(
+              ThemeColorModel().getThemeColor(
+                condition: BlocProvider.of<GetWeatherCubit>(
+                  context,
+                ).weatherModel?.weatherCondition,
+              ),
+            ) ==
+            Brightness.dark
+        ? Colors.white
+        : Colors.black;
+  }
+
   MaterialColor getThemeColor({required String? condition}) {
     if (condition == null) {
       return Colors.blue;

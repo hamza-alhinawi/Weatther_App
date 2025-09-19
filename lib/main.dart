@@ -25,45 +25,15 @@ class WeatherApp extends StatelessWidget {
             return MaterialApp(
               theme: ThemeData(
                 appBarTheme: AppBarTheme(
-                  foregroundColor:
-                      ThemeData.estimateBrightnessForColor(
-                            ThemeColorModel().getThemeColor(
-                              condition: BlocProvider.of<GetWeatherCubit>(
-                                context,
-                              ).weatherModel?.weatherCondition,
-                            ),
-                          ) ==
-                          Brightness.dark
-                      ? Colors.white
-                      : Colors.black,
+                  foregroundColor: ThemeColorModel().colorText(context),
 
                   backgroundColor: ThemeColorModel().getThemeColor(
                     condition: weatherModel?.weatherCondition,
                   ),
                 ),
                 textTheme: ThemeData.light().textTheme.apply(
-                  displayColor:
-                      ThemeData.estimateBrightnessForColor(
-                            ThemeColorModel().getThemeColor(
-                              condition: BlocProvider.of<GetWeatherCubit>(
-                                context,
-                              ).weatherModel?.weatherCondition,
-                            ),
-                          ) ==
-                          Brightness.dark
-                      ? Colors.white
-                      : Colors.black,
-                  bodyColor:
-                      ThemeData.estimateBrightnessForColor(
-                            ThemeColorModel().getThemeColor(
-                              condition: BlocProvider.of<GetWeatherCubit>(
-                                context,
-                              ).weatherModel?.weatherCondition,
-                            ),
-                          ) ==
-                          Brightness.dark
-                      ? Colors.white
-                      : Colors.black,
+                  displayColor: ThemeColorModel().colorText(context),
+                  bodyColor: ThemeColorModel().colorText(context),
                 ),
                 primarySwatch: ThemeColorModel().getThemeColor(
                   condition: BlocProvider.of<GetWeatherCubit>(
